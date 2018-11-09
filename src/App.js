@@ -12,7 +12,6 @@ class App extends Component {
   ]
 
   render() {
-    /* map( todo => (<Todo/>) ) */
     return (
       <div>
         <ul>
