@@ -4,11 +4,11 @@ class Todo extends Component {
   render() {
     const { done, onToggleDone, text, onDeleteClicked } = this.props
     return (
-      <div>
+      <div className="listItem">
         <li className={done ? 'done' : ''} onClick={onToggleDone}>
           {text}
         </li>
-        <button onClick={onDeleteClicked}>X</button>
+        <button onClick={onDeleteClicked}>x</button>
       </div>
     )
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Todo from './Todo'
 import Input from './Input'
 import './App.css'
+import './Input.css'
 
 class App extends Component {
   state = {

@@ -1,0 +1,22 @@
+input {
+  padding: 14px;
+  font-size: 24px;
+  border: none;
+  border-radius: 8px;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+input::placeholder {
+  font-family: 'Nunito', sans-serif;
+  color: #88d8b0;
+  font-weight: 700;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+}
