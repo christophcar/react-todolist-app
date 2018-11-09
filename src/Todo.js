@@ -2,7 +2,15 @@ import React, { Component } from 'react'
 
 class Todo extends Component {
   render() {
-    return <li onClick={this.props.onToggleDone}>{this.props.text}</li>
+    const { done, onToggleDone, text, onDeleteClicked } = this.props
+    return (
+      <div>
+        <li className={done ? 'done' : ''} onClick={onToggleDone}>
+          {text}
+        </li>
+        <button onClick={onDeleteClicked}>X</button>
+      </div>
+    )
   }
 }
 

@@ -3,4 +3,30 @@ body {
   justify-content: center;
   align-items: center;
   margin: 20px;
+  font-size: 20px;
+  line-height: 2;
+}
+
+input {
+  padding: 8px;
+  font-size: 20px;
+}
+
+div {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  height: 25px;
+  width: 25px;
+  margin-left: 25px;
+  border-radius: 50%;
+  font-size: 16px;
+  background: skyblue;
+  border: none;
+}
+
+.done {
+  text-decoration: line-through;
 }

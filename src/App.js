@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Todo from './Todo'
+import Input from './Input'
 import './App.css'
 
 class App extends Component {
@@ -17,9 +18,34 @@ class App extends Component {
     const { todos } = this.state
     const newTodos = [
       ...todos.slice(0, index),
-      { ...todos[index], done: true },
+      { ...todos[index], done: !todos[index].done },
       ...todos.slice(index + 1)
     ]
+
+    this.setState({
+      todos: newTodos
+    })
+  }
+
+  valueFromInput = event => {
+    const { todos } = this.state
+    if (event.key === 'Enter') {
+      const newTodos = [
+        // ...todos.slice(0, index),
+        { text: event.target.value, done: false },
+        ...todos
+        // ...todos.slice(index + 1)
+      ]
+      this.setState({
+        todos: newTodos
+      })
+      event.target.value = ''
+    }
+  }
+
+  deleteClicked = index => {
+    const { todos } = this.state
+    const newTodos = [...todos.slice(0, index), ...todos.slice(index + 1)]
 
     this.setState({
       todos: newTodos
@@ -30,12 +56,15 @@ class App extends Component {
     return (
       <section>
         <h1>Today's todolist</h1>
-        <input placeholder="What's next?" />
+        <Input value={this.valueFromInput} />
         <ul>
           {this.state.todos.map((todo, index) => (
             <Todo
+              key={Math.random()}
               text={todo.text}
+              done={todo.done}
               onToggleDone={() => this.toggleDone(index)}
+              onDeleteClicked={() => this.deleteClicked(index)}
             />
           ))}
         </ul>
