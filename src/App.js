@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Todo from './Todo'
 import Input from './Input'
+import Counter from './Counter'
 import './App.css'
 import './Input.css'
 
@@ -16,9 +17,11 @@ class App extends Component {
   }
 
   render() {
+    const cntDone = this.state.todos.filter(item => item.done).length
     return (
       <section>
         <h1>Today's todolist</h1>
+        <Counter num={cntDone} />
         <Input value={this.valueFromInput} />
         <ul>
           {this.state.todos.map((todo, index) => (
