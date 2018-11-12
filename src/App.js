@@ -7,21 +7,17 @@ import './Input.css'
 
 class App extends Component {
   state = {
-    todos: [
-      { text: 'Eat icecream', done: false },
-      { text: 'Walk around', done: false },
-      { text: 'Take long break', done: false },
-      { text: 'Start coding', done: false },
-      { text: 'Read a book', done: false }
-    ]
+    todos: this.load()
   }
 
   render() {
-    const cntDone = this.state.todos.filter(item => item.done).length
+    const onCountDone = this.state.todos.filter(item => item.done).length
+    // save data from array here
+    this.save()
     return (
       <section>
         <h1>Today's todolist</h1>
-        <Counter num={cntDone} />
+        <Counter num={onCountDone} />
         <Input value={this.valueFromInput} />
         <ul>
           {this.state.todos.map((todo, index) => (
@@ -36,6 +32,19 @@ class App extends Component {
         </ul>
       </section>
     )
+  }
+
+  save() {
+    localStorage.setItem('todo-app-todos', JSON.stringify(this.state.todos))
+  }
+
+  load() {
+    // could also write this without try and catch...
+    try {
+      return JSON.parse(localStorage.getItem('todo-app-todos')) || []
+    } catch (err) {
+      return []
+    }
   }
 
   toggleDone = index => {
