@@ -51,12 +51,7 @@ class App extends Component {
   valueFromInput = event => {
     const { todos } = this.state
     if (event.key === 'Enter') {
-      const newTodos = [
-        // ...todos.slice(0, index),
-        { text: event.target.value, done: false },
-        ...todos
-        // ...todos.slice(index + 1)
-      ]
+      const newTodos = [{ text: event.target.value, done: false }, ...todos]
       this.setState({
         todos: newTodos
       })
