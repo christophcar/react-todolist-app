@@ -15,6 +15,26 @@ class App extends Component {
     ]
   }
 
+  render() {
+    return (
+      <section>
+        <h1>Today's todolist</h1>
+        <Input value={this.valueFromInput} />
+        <ul>
+          {this.state.todos.map((todo, index) => (
+            <Todo
+              key={Math.random()}
+              text={todo.text}
+              done={todo.done}
+              onToggleDone={() => this.toggleDone(index)}
+              onDeleteClicked={() => this.deleteClicked(index)}
+            />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
   toggleDone = index => {
     const { todos } = this.state
     const newTodos = [
@@ -51,26 +71,6 @@ class App extends Component {
     this.setState({
       todos: newTodos
     })
-  }
-
-  render() {
-    return (
-      <section>
-        <h1>Today's todolist</h1>
-        <Input value={this.valueFromInput} />
-        <ul>
-          {this.state.todos.map((todo, index) => (
-            <Todo
-              key={Math.random()}
-              text={todo.text}
-              done={todo.done}
-              onToggleDone={() => this.toggleDone(index)}
-              onDeleteClicked={() => this.deleteClicked(index)}
-            />
-          ))}
-        </ul>
-      </section>
-    )
   }
 }
 
