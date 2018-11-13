@@ -11,11 +11,11 @@ const Wrapper = styled.section`
   }
 `
 
-const Line = styled.div`
-  width: 100%;
-  margin: 10px;
-  border-bottom: ${props => props.width || 3}px solid black;
-`
+// const Line = styled.div`
+//   width: 100%;
+//   margin: 10px;
+//   border-bottom: ${props => props.width || 3}px solid black;
+// `
 
 const Text = styled.span`
   white-space: nowrap;
@@ -26,9 +26,9 @@ class Seperator extends Component {
   render() {
     return (
       <Wrapper>
-        <Line width={10} />
+        {/* <Line width={10} /> */}
         <Text>{this.props.text}</Text>
-        <Line width={10} />
+        {/* <Line width={10} /> */}
       </Wrapper>
     )
   }
