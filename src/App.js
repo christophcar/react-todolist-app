@@ -18,7 +18,7 @@ class App extends Component {
     this.save()
     return (
       <section className="App">
-        <h1>Today's todolist</h1>
+        <h1 className="todo-heading">Today's todolist</h1>
         <Counter num={onCountDone} />
         <Input value={this.valueFromInput} />
         <Seperator text="OPEN TODOS" />
