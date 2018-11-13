@@ -5,28 +5,30 @@ const Wrapper = styled.section`
   display: flex;
   align-items: center;
 
-  .hr {
-    width: 100%;
-    margin: 10px;
-    border-bottom: 3px solid black;
-  }
-  span {
-    white-space: nowrap;
-    color: #ff6f69;
-  }
   .completed {
     text-decoration: underline;
     font-weight: bold;
   }
 `
 
+const Line = styled.div`
+  width: 100%;
+  margin: 10px;
+  border-bottom: ${props => props.width || 3}px solid black;
+`
+
+const Text = styled.span`
+  white-space: nowrap;
+  color: #ff6f69;
+`
+
 class Seperator extends Component {
   render() {
     return (
       <Wrapper>
-        <div className="hr" />
-        <span className="completed">{this.props.text}</span>
-        <div className="hr" />
+        <Line width={10} />
+        <Text>{this.props.text}</Text>
+        <Line width={10} />
       </Wrapper>
     )
   }
