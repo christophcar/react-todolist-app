@@ -3,6 +3,7 @@ input {
   font-size: 24px;
   border: none;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .done {
@@ -18,5 +19,5 @@ input::placeholder {
 .listItem {
   display: flex;
   justify-content: space-between;
-  max-width: 300px;
+  /* max-width: 300px; */
 }

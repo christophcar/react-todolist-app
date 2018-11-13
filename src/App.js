@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Todo from './Todo'
 import Input from './Input'
 import Counter from './Counter'
+import Seperator from './Seperator'
+import uid from 'uid'
 import './App.css'
 import './Input.css'
 
@@ -15,20 +17,37 @@ class App extends Component {
     // save data from array here
     this.save()
     return (
-      <section>
+      <section className="App">
         <h1>Today's todolist</h1>
         <Counter num={onCountDone} />
         <Input value={this.valueFromInput} />
+        <Seperator text="OPEN TODOS" />
         <ul>
-          {this.state.todos.map((todo, index) => (
-            <Todo
-              key={Math.random()}
-              text={todo.text}
-              done={todo.done}
-              onToggleDone={() => this.toggleDone(index)}
-              onDeleteClicked={() => this.deleteClicked(index)}
-            />
-          ))}
+          {this.state.todos
+            .filter(item => !item.done)
+            .map(todo => (
+              <Todo
+                key={todo.id}
+                text={todo.text}
+                done={todo.done}
+                onToggleDone={() => this.toggleDone(todo.id)}
+                onDeleteClicked={() => this.deleteClicked(todo.id)}
+              />
+            ))}
+        </ul>
+        <Seperator text="COMPLETED TODOS" />
+        <ul>
+          {this.state.todos
+            .filter(item => item.done)
+            .map(todo => (
+              <Todo
+                key={todo.id}
+                text={todo.text}
+                done={todo.done}
+                onToggleDone={() => this.toggleDone(todo.id)}
+                onDeleteClicked={() => this.deleteClicked(todo.id)}
+              />
+            ))}
         </ul>
       </section>
     )
@@ -47,8 +66,9 @@ class App extends Component {
     }
   }
 
-  toggleDone = index => {
+  toggleDone = id => {
     const { todos } = this.state
+    const index = todos.findIndex(todo => todo.id === id)
     const newTodos = [
       ...todos.slice(0, index),
       { ...todos[index], done: !todos[index].done },
@@ -63,7 +83,10 @@ class App extends Component {
   valueFromInput = event => {
     const { todos } = this.state
     if (event.key === 'Enter') {
-      const newTodos = [{ text: event.target.value, done: false }, ...todos]
+      const newTodos = [
+        { text: event.target.value, done: false, id: uid() },
+        ...todos
+      ]
       this.setState({
         todos: newTodos
       })
@@ -71,8 +94,9 @@ class App extends Component {
     }
   }
 
-  deleteClicked = index => {
+  deleteClicked = id => {
     const { todos } = this.state
+    const index = todos.findIndex(todo => todo.id === id)
     const newTodos = [...todos.slice(0, index), ...todos.slice(index + 1)]
 
     this.setState({

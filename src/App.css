@@ -1,18 +1,15 @@
-body {
+.App {
   font-family: 'Nunito', sans-serif;
-  color: #333;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffeead;
-  margin: 20px;
+  color: #333;
+  width: 80%;
+  margin: 0 auto;
+  /* margin: 20px; */
   font-size: 24px;
   line-height: 2;
-}
-
-div {
-  display: flex;
-  align-items: center;
 }
 
 button {
