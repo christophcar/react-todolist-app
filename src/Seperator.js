@@ -4,23 +4,21 @@ import styled from 'styled-components'
 const Wrapper = styled.section`
   display: flex;
   align-items: center;
-}
 
-.Seperator .hr {
-  width: 100%;
-  margin: 10px;
-  border-bottom: 3px solid black;
-}
-
-.Seperator span {
-  white-space: nowrap;
-  color: #ff6f69;
-}
-
-.completed {
-  text-decoration: underline;
-  font-weight: bold;
-}`
+  .hr {
+    width: 100%;
+    margin: 10px;
+    border-bottom: 3px solid black;
+  }
+  span {
+    white-space: nowrap;
+    color: #ff6f69;
+  }
+  .completed {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+`
 
 class Seperator extends Component {
   render() {
