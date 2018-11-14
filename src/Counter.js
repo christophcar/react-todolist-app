@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
-import './Counter.css'
+import styled from 'styled-components'
+
+const Wrapper = styled.h3`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: lighter;
+  font-style: italic;
+`
+
 class Counter extends Component {
   render() {
-    return <h3>Done: {this.props.num}</h3>
+    return <Wrapper>Done: {this.props.num}</Wrapper>
   }
 }
 export default Counter

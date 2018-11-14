@@ -3,9 +3,28 @@ import Todo from './Todo'
 import Input from './Input'
 import Counter from './Counter'
 import Seperator from './Seperator'
+import ProgressBar from './ProgressBar'
+import ToggleButton from './ToggleButton'
+import styled from 'styled-components'
 import uid from 'uid'
-import './App.css'
-import './Input.css'
+
+const Wrapper = styled.section`
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  width: 75%;
+  margin: 0 auto;
+  font-size: 24px;
+  line-height: 2;
+`
+
+const Heading = styled.h1`
+  margin: 0;
+  margin-top: 15px;
+`
 
 class App extends Component {
   state = {
@@ -14,12 +33,14 @@ class App extends Component {
 
   render() {
     const onCountDone = this.state.todos.filter(item => item.done).length
-    // save data from array here
+    const percentage = onCountDone / this.state.todos.length
     this.save()
+
     return (
-      <section className="App">
-        <h1 className="todo-heading">Today's todolist</h1>
+      <Wrapper>
+        <Heading>Today's todolist</Heading>
         <Counter num={onCountDone} />
+        <ProgressBar percentage={percentage} height={15} />
         <Input value={this.valueFromInput} />
         <Seperator text="OPEN TODOS" />
         <ul>
@@ -49,7 +70,13 @@ class App extends Component {
               />
             ))}
         </ul>
-      </section>
+        <ToggleButton
+          defaultText="Foo"
+          alternativeText="Bar"
+          onClick={() => console.log('click')}
+          inititalDefault={true}
+        />
+      </Wrapper>
     )
   }
 
